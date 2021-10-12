@@ -1,7 +1,10 @@
 require_relative "../lib/bookmark"
 describe ".view" do
-  it "returns a list of saved bookmarks" do
+  it "returns a list of bookmarks" do
     bookmarks = Bookmark.view
-    expect(bookmarks).to eq ["https://www.theodinproject.com", "https://www.udemy.com", "https://www.codecademy.com", "https://www.codewars.com/dashboard"]
+    expect(bookmarks).to include "http://www.makersacademy.com"
+    expect(bookmarks).to include "http://www.destroyallsoftware.com"
+    expect(bookmarks).to include "http://www.google.com"
+    expect(bookmarks).to include "http://www.twitter.com"
   end
 end
