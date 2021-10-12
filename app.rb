@@ -2,6 +2,7 @@
 
 require "sinatra"
 require "sinatra/reloader"
+require "./lib/bookmark.rb"
 
 # class
 class BookmarkManager < Sinatra::Base
@@ -11,5 +12,10 @@ class BookmarkManager < Sinatra::Base
 
   get "/" do
     "Hello World!"
+  end
+
+  get "/bookmark" do
+    @bookmarks = Bookmark.view
+    erb :bookmark
   end
 end
