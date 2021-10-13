@@ -15,7 +15,7 @@ The website will have the following specification:
 - [ ] Filter bookmarks by tag
 - [ ] Users are restricted to manage only their own bookmarks
 
-```
+```text
 As an user
 to be able to see bookmarks
 I can see a list of bookmarks that I and other users have added
