@@ -15,6 +15,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   get "/bookmark" do
+    # p ENV
+
     @bookmarks = Bookmark.view
     erb :bookmark
   end
