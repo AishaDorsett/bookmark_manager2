@@ -15,3 +15,11 @@ describe ".view" do
     expect(bookmarks).to include "http://www.twitter.com"
   end
 end
+
+describe ".create" do 
+  it "creates a new bookmark" do 
+    Bookmark.create(new_bookmark: 'http://www.facebook.com')
+
+    expect(Bookmark.view).to include 'http://www.facebook.com'
+  end
+end
