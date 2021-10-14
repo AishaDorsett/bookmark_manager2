@@ -17,23 +17,16 @@ class BookmarkManager < Sinatra::Base
   end
 
   get "/bookmark" do
-    # p ENV
     @bookmarks = Bookmark.view
-    # @new_bookmark = session[:new_bookmark]
     erb :bookmark
   end
 
-  post "/bookmark" do
-    Bookmark.create(new_bookmark: params[:new_bookmark])
-    redirect "/bookmark"
-  end
-
   get "/add" do
-    "hello"
     erb :"add_bookmark"
   end
 
-
-
-
+  post "/create" do
+    Bookmark.create(params[:url], params[:title])
+    redirect "/bookmark"
+  end
 end

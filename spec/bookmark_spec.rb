@@ -3,23 +3,18 @@ describe ".view" do
   it "returns a list of bookmarks" do
     connection = PG.connect(dbname: "bookmark_manager_test")
 
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.destroyallsoftware.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.google.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.twitter.com');")
+    connection.exec("INSERT INTO bookmarks (title, url) VALUES ('MakersAcademy','http://www.makersacademy.com');")
 
     bookmarks = Bookmark.view
-    expect(bookmarks).to include "http://www.makersacademy.com"
-    expect(bookmarks).to include "http://www.destroyallsoftware.com"
-    expect(bookmarks).to include "http://www.google.com"
-    expect(bookmarks).to include "http://www.twitter.com"
+
+    expect(bookmarks).to include ({:title=>"MakersAcademy", :url=>"http://www.makersacademy.com"})
   end
 end
 
 describe ".create" do 
   it "creates a new bookmark" do 
-    Bookmark.create(new_bookmark: 'http://www.facebook.com')
+    Bookmark.create('Facebook', 'http://www.facebook.com')
 
-    expect(Bookmark.view).to include 'http://www.facebook.com'
+    expect(Bookmark.view).to include  ({:title=>"Facebook", :url=>"http://www.facebook.com"})
   end
 end

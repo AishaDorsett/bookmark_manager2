@@ -1,13 +1,12 @@
 <div>
-  <l>
-    <% @bookmarks.each do |bookmark| %>
-      <li><%= bookmark %></li>
+  <ul>
+    <% @bookmarks.each do |bookmark| %>  
+      <li>
+        <a href="<%= bookmark[:url] %>">
+          <%= bookmark[:title] %>
+        </a>
+      </li>
     <% end %>
-  </ol>
+  </ul>
 </div>
-
-<%# <form action="/bookmark" method="post">
-  <label for=“new”_bookmark>Add Bookmark:</label><br>
-  <input type="text" name="new_bookmark"> 
-  <input type="submit" name="Submit">
-</form> %>
+      
